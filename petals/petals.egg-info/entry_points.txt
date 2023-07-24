@@ -1,0 +1,3 @@
+[console_scripts]
+start-petals = scripts.start_petals:start_server
+

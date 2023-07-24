@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: petals
+Version: 0.1.0
+Summary: A Python package to interact with the Petals server.
+Home-page: UNKNOWN
+Author: Mohamed Zied El Arbi
+Author-email: medzied.arbi@gmail.com
+License: MIT
+Description: # Petals Package
+        
+        Petals is a Python package that provides functionality to interact with the Petals server.
+        
+        ## Installation
+        
+        You can install the package using pip:
+        
+        ```bash
+        pip install petals
+        ```
+        
+        ## Usage
+        To use the PetalsClient to interact with the Petals server, follow these steps:
+        
+        ```python
+        from petals import PetalsClient
+        ```
+        
+        ### Create a PetalsClient object
+        ```python
+        client = PetalsClient('127.0.0.1', 8888)
+        ```
+        
+        ### Send search query to the server
+        ```python
+        search_input = {
+            "bloom_source": "bloom",
+            "files": "APAC_AUS_*",
+            "query": {
+                'condition': 'AND',
+                'rules': [
+                    {
+                        'column': 'account_status',
+                        'value': 'Inactive'
+                    },
+                    {
+                        'column': 'account_type',
+                        'value': 'Savings'
+                    },
+                    {
+                        'column': 'loan_status',
+                        'value': 'Current'
+                    }
+                ]
+            }
+        }
+        
+        matching_files = client.send_search_query(search_input)
+        for file_path in matching_files:
+            print(file_path)
+        ```
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
